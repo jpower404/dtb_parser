@@ -47,10 +47,13 @@ If you want to inspect the contents of a DTB file (including the properties), yo
    cd dtb-parser
    ```
 
-2. Update DTB filepath
-
-3. Compile and run
+2. Build project with cmake
+    ``` bash
+    ./build.sh
     ```
-    g++ -o parse_dtb parse_dtb.cpp -lfdt
-    ./parse_dtb
+
+3. Execute binary
+    ```bash
+    cd build
+    ./parse_dtb path/to/dtb.dtb
     ```

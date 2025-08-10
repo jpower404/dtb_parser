@@ -54,9 +54,14 @@ void printTopLevelNodes(const void* fdt) {
     }
 }
 
-int main() {
+int main(int argc, char* argv[]) {
     
-    const char* dtbFilename = "dtb_files/bcm2708-rpi-b-rev1.dtb";
+    if (argc != 2) {
+        std::cerr << "Usage: " << argv[0] << " <path_to_dtb_file>" << std::endl;
+        return -1;
+    }
+
+    const char* dtbFilename = argv[1];
 
     // read the DTB file into memory
     std::vector<char> dtbData;
