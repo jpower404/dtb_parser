@@ -1,25 +1,31 @@
 # dtb_parser
+
 A C++ project to parse Device Tree Blobs (DTBs) and extract properties from specified subnodes.
 
 ## Prerequisites
 
-- To run this project, you need to have a **DTB file** (Device Tree Blob file).
+To run this project, you will need the following dependencies:
 
-### Example DTB file used for this project:
+- **DTB File**: A Device Tree Blob file, which is required for the program to parse. The example DTB file is from the [Raspberry Pi GitHub repository](https://github.com/raspberrypi/firmware/blob/master/boot/bcm2708-rpi-b-plus.dtb).
+- **libfdt**: A C library used for working with Device Tree files. It is required for parsing DTB files.
 
-- The example DTB file is from the [Raspberry Pi GitHub repository](https://github.com/raspberrypi/firmware/blob/master/boot/bcm2708-rpi-b-plus.dtb).
+### Installing Dependencies
 
-## How to Decompile a DTB File into DTS
-
-If you want to inspect the contents of a DTB file (including the properties), you can use the `dtc` (Device Tree Compiler) command to decompile it into a readable **DTS** (Device Tree Source) format. Here's how you can do it:
-
-1. Install `dtc` if you don't have it:
-   - On Ubuntu/Debian, use:
+1. Install `dtc` on **Ubuntu/Debian**:
      ```bash
      sudo apt-get install device-tree-compiler
      ```
 
-2. Decompile the DTB file into a DTS file:
+1. Install `libfdt` on **Ubuntu/Debian**:
+     ```bash
+     sudo apt-get install libfdt-dev
+     ```
+
+## How to Decompile a DTB File into DTS
+
+If you want to inspect the contents of a DTB file (including the properties), you can use the `dtc` (Device Tree Compiler) command to decompile it into a readable **DTS** (Device Tree Source) format.
+
+1. Decompile the DTB file into a DTS file:
     ```bash
     dtc -I dtb -O dts -o output.dts input.dtb
     ```
@@ -45,6 +51,6 @@ If you want to inspect the contents of a DTB file (including the properties), yo
 
 3. Compile and run
     ```
-    g++ -o parse_dtb parse_dtb.cpp
+    g++ -o parse_dtb parse_dtb.cpp -lfdt
     ./parse_dtb
     ```
